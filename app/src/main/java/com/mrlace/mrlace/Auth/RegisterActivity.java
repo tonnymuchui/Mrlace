@@ -99,7 +99,6 @@ public class RegisterActivity extends AppCompatActivity {
                                                 Toast.makeText(RegisterActivity.this, "Account Created", Toast.LENGTH_SHORT).show();
                                                 loadingBar.dismiss();
                                                 startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
-
                                             }
                                             else {
 
@@ -111,7 +110,7 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                         else {
 
-                            Toast.makeText(RegisterActivity.this, "This No:" + "" + phoneNumber + "" + "Already exist!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegisterActivity.this, "This No:" + ""+ phoneNumber + "" + "Already exist!", Toast.LENGTH_SHORT).show();
                             loadingBar.dismiss();
                             startActivity(new Intent(RegisterActivity.this,MainActivity.class));
                         }

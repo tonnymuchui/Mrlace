@@ -19,14 +19,18 @@ import com.google.firebase.database.ValueEventListener;
 import com.mrlace.mrlace.HomeActivity;
 import com.mrlace.mrlace.Model.Users;
 import com.mrlace.mrlace.R;
+import com.mrlace.mrlace.prevalent.Prevalent;
+import com.rey.material.widget.CheckBox;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.paperdb.Paper;
 
 public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.login_btn) Button login_btn;
     @BindView(R.id.login_phone_input) EditText login_phone_input;
     @BindView(R.id.login_password_input) EditText login_password_input;
+    @BindView(R.id.log_remember_me_chkb) CheckBox checkBox;
     private ProgressDialog loadingBar;
     private DatabaseReference rootRef;
     private String parentDbName = "Users";
@@ -74,6 +78,13 @@ String loginPassword = login_password_input.getText().toString();
     }
 
     private void AllowAccount(final String phoneNumber, final String loginPassword) {
+
+        if (checkBox.isChecked()){
+
+            Paper.book().write(Prevalent.UserPhoneKey, phoneNumber);
+            Paper.book().write(Prevalent.UserPasswordKey, loginPassword);
+        }
+
         rootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
