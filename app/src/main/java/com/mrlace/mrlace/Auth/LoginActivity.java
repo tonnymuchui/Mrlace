@@ -61,7 +61,7 @@ String loginPassword = login_password_input.getText().toString();
             Toast.makeText(this, "Enter Password", Toast.LENGTH_SHORT).show();
         }
         else {
-    loadingBar.setTitle("Loging In");
+    loadingBar.setTitle("Login Loading");
     loadingBar.setMessage("Please Wait!");
     loadingBar.setCanceledOnTouchOutside(false);
     loadingBar.show();
@@ -81,14 +81,17 @@ String loginPassword = login_password_input.getText().toString();
                     
                 }
                 else {
-                    loadingBar.dismiss();
+
                     Toast.makeText(LoginActivity.this, "Account Doesn't Exist!", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+                    loadingBar.dismiss();
+
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
+
 
             }
         });
