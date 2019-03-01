@@ -16,6 +16,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.mrlace.mrlace.HomeActivity;
+import com.mrlace.mrlace.Model.Users;
 import com.mrlace.mrlace.R;
 
 import butterknife.BindView;
@@ -71,14 +73,27 @@ String loginPassword = login_password_input.getText().toString();
         }
     }
 
-    private void AllowAccount(final String phoneNumber, String loginPassword) {
+    private void AllowAccount(final String phoneNumber, final String loginPassword) {
         rootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 if (dataSnapshot.child(parentDbName).child(phoneNumber).exists()){
 
-                    
+                    Users usersData = dataSnapshot.child(parentDbName).child(phoneNumber).getValue(Users.class);
+
+                    if (usersData.getPhoneNumber().equals(phoneNumber)){
+
+                        if (usersData.getPassword().equals(loginPassword)){
+
+                            loadingBar.dismiss();
+                            startActivity(new Intent(LoginActivity.this,HomeActivity.class));
+                        }
+                        else {
+                            loadingBar.dismiss();
+                            Toast.makeText(LoginActivity.this, "Password Incorrect!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
                 }
                 else {
 
