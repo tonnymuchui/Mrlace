@@ -37,9 +37,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        Paper.init(this);
+
         rootRef = FirebaseDatabase.getInstance().getReference();
         loadingBar = new ProgressDialog(this);
+        Paper.init(this);
         main_loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         if (UserPhoneKey != "" && UserPasswordKey != ""){
 
             if (!TextUtils.isEmpty(UserPhoneKey) && !TextUtils.isEmpty(UserPasswordKey)){
+
                 AllowAcess(UserPhoneKey, UserPasswordKey);
 
                 loadingBar.setTitle("Already Logged in!");
@@ -70,20 +72,20 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void AllowAcess(final String phoneNumber,final String loginPassword) {
+    private void AllowAcess(final String UserPhoneKey,final String UserPasswordKey) {
 
 
         rootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                if (dataSnapshot.child(parentDbName).child(phoneNumber).exists()){
+                if (dataSnapshot.child(parentDbName).child(UserPhoneKey).exists()){
 
-                    Users usersData = dataSnapshot.child(parentDbName).child(phoneNumber).getValue(Users.class);
+                    Users usersData = dataSnapshot.child(parentDbName).child(UserPhoneKey).getValue(Users.class);
 
-                    if (usersData.getPhoneNumber().equals(phoneNumber)){
+                    if (usersData.getPhoneNumber().equals(UserPhoneKey)){
 
-                        if (usersData.getPassword().equals(loginPassword)){
+                        if (usersData.getPassword().equals(UserPasswordKey)){
 
                             loadingBar.dismiss();
                             startActivity(new Intent(MainActivity.this,HomeActivity.class));

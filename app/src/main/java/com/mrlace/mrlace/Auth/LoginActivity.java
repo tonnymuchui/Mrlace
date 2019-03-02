@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
 
         rootRef = FirebaseDatabase.getInstance().getReference();
         loadingBar = new ProgressDialog(this);
-
+        Paper.init(this);
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
