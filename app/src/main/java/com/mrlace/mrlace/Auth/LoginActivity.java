@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -16,6 +17,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.mrlace.mrlace.AdminAddNewProductActivity;
 import com.mrlace.mrlace.HomeActivity;
 import com.mrlace.mrlace.Model.Users;
 import com.mrlace.mrlace.R;
@@ -31,6 +33,8 @@ public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.login_phone_input) EditText login_phone_input;
     @BindView(R.id.login_password_input) EditText login_password_input;
     @BindView(R.id.log_remember_me_chkb) CheckBox checkBox;
+    @BindView(R.id.admin_panel_link) TextView admin_panel_link;
+    @BindView(R.id.not_admin_panel_link) TextView not_admin_panel_link;
     private ProgressDialog loadingBar;
     private DatabaseReference rootRef;
     private String parentDbName = "Users";
@@ -49,6 +53,25 @@ public class LoginActivity extends AppCompatActivity {
                 LoginUser();
             }
 
+        });
+
+        admin_panel_link.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                login_btn.setText("Login Admin");
+                admin_panel_link.setVisibility(View.INVISIBLE);
+                not_admin_panel_link.setVisibility(View.VISIBLE);
+                parentDbName = "Admins";
+            }
+        });
+        not_admin_panel_link.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                login_btn.setText("Login");
+                admin_panel_link.setVisibility(View.VISIBLE);
+                not_admin_panel_link.setVisibility(View.INVISIBLE);
+                parentDbName = "Users";
+            }
         });
     }
 
@@ -97,8 +120,16 @@ String loginPassword = login_password_input.getText().toString();
 
                         if (usersData.getPassword().equals(loginPassword)){
 
-                            loadingBar.dismiss();
-                            startActivity(new Intent(LoginActivity.this,HomeActivity.class));
+                       if (parentDbName.equals("Admins")){
+
+                           loadingBar.dismiss();
+                           startActivity(new Intent(LoginActivity.this,AdminAddNewProductActivity.class));
+                       }
+                       else if (parentDbName.equals("Users")){
+
+                           loadingBar.dismiss();
+                           startActivity(new Intent(LoginActivity.this,HomeActivity.class));
+                       }
                         }
                         else {
                             loadingBar.dismiss();
