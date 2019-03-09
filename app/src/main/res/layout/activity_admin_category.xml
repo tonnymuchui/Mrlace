@@ -53,5 +53,42 @@
             android:src="@drawable/sweather"/>
 
     </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/linear1_category_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/linear_category_layout"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_marginTop="45dp">
+
+        <ImageView
+            android:id="@+id/glasses"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:src="@drawable/glasses"/>
+
+        <ImageView
+            android:id="@+id/purses_bags_wallets"
+            android:layout_width="90dp"
+            android:layout_height="80dp"
+            android:src="@drawable/purses_bags"/>
+
+        <ImageView
+            android:id="@+id/hats_caps"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/hats"/>
+
+        <ImageView
+            android:id="@+id/shoess"
+            android:layout_width="70dp"
+            android:layout_height="80dp"
+            android:src="@drawable/shoess"
+            android:layout_marginStart="16dp"/>
+
+    </LinearLayout>
 
 </RelativeLayout>
