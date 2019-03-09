@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".AdminAddNewProductActivity">
 
     <ImageView
-        android:id="@+id/select_product_image"
+        android:id="@+id/admin_select_product_image"
         android:layout_width="350dp"
         android:layout_height="200dp"
         android:cropToPadding="false"
@@ -17,10 +18,10 @@
         android:layout_marginTop="10dp" />
 
     <EditText
-        android:id="@+id/product_name"
+        android:id="@+id/admin_product_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/select_product_image"
+        android:layout_below="@+id/admin_select_product_image"
         android:inputType="textMultiLine"
         android:layout_marginTop="20dp"
         android:padding="20dp"
@@ -30,10 +31,10 @@
         android:background="@drawable/input_design"/>
 
     <EditText
-        android:id="@+id/product_description"
+        android:id="@+id/admin_product_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/product_name"
+        android:layout_below="@+id/admin_product_name"
         android:inputType="textMultiLine"
         android:layout_marginTop="6dp"
         android:padding="20dp"
@@ -43,10 +44,10 @@
         android:background="@drawable/input_design"/>
 
     <EditText
-        android:id="@+id/product_price"
+        android:id="@+id/admin_product_price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/product_description"
+        android:layout_below="@+id/admin_product_description"
         android:inputType="textMultiLine"
         android:layout_marginTop="6dp"
         android:padding="20dp"
@@ -59,7 +60,7 @@
         android:id="@+id/add_new_product"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/product_price"
+        android:layout_below="@+id/admin_product_price"
         android:text="Add Product"
         android:layout_marginLeft="45dp"
         android:layout_marginRight="45dp"
