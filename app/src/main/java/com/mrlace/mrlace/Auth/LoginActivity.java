@@ -18,6 +18,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.mrlace.mrlace.AdminAddNewProductActivity;
+import com.mrlace.mrlace.AdminCategoryActivity;
 import com.mrlace.mrlace.HomeActivity;
 import com.mrlace.mrlace.Model.Users;
 import com.mrlace.mrlace.R;
@@ -123,7 +124,7 @@ String loginPassword = login_password_input.getText().toString();
                        if (parentDbName.equals("Admins")){
 
                            loadingBar.dismiss();
-                           startActivity(new Intent(LoginActivity.this,AdminAddNewProductActivity.class));
+                           startActivity(new Intent(LoginActivity.this,AdminCategoryActivity.class));
                        }
                        else if (parentDbName.equals("Users")){
 
