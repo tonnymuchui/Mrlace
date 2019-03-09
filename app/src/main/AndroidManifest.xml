@@ -23,7 +23,8 @@
         <activity android:name=".Auth.LoginActivity" />
         <activity android:name=".Auth.RegisterActivity" />
         <activity android:name=".HomeActivity" />
-        <activity android:name=".AdminAddNewProductActivity"></activity>
+        <activity android:name=".AdminAddNewProductActivity" />
+        <activity android:name=".AdminCategoryActivity"></activity>
     </application>
 
 </manifest>
