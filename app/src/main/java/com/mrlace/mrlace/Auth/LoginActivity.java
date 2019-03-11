@@ -129,6 +129,8 @@ String loginPassword = login_password_input.getText().toString();
 
                            loadingBar.dismiss();
                            startActivity(new Intent(LoginActivity.this,HomeActivity.class));
+                           Prevalent.currentOnlineUser = usersData;
+
                        }
                         }
                         else {
