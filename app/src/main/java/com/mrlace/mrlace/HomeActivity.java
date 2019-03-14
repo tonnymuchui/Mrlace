@@ -161,6 +161,7 @@ public class HomeActivity extends AppCompatActivity
         } else if (id == R.id.nav_categories) {
 
         } else if (id == R.id.nav_settings) {
+            startActivity(new Intent(HomeActivity.this, SettingsActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
 
         } else if (id == R.id.nav_logout) {
 
