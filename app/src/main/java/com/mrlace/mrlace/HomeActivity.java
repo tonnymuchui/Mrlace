@@ -1,6 +1,7 @@
 package com.mrlace.mrlace;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -79,6 +80,7 @@ public class HomeActivity extends AppCompatActivity
         userNameTextView.setText(Prevalent.currentOnlineUser.getUserName());
 
         recyclerView.setHasFixedSize(true);
+        recyclerView.setBackgroundColor(Color.WHITE);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
     }
