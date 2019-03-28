@@ -79,6 +79,8 @@ public class HomeActivity extends AppCompatActivity
 
         userNameTextView.setText(Prevalent.currentOnlineUser.getUserName());
 
+        Picasso.get().load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile).into(userProfileImage);
+
         recyclerView.setHasFixedSize(true);
         recyclerView.setBackgroundColor(Color.WHITE);
         layoutManager = new LinearLayoutManager(this);

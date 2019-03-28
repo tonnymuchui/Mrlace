@@ -12,7 +12,6 @@
         android:layout_height="50dp"
         android:background="@color/colorPrimary">
 
-
         <android.support.v7.widget.Toolbar
             android:id="@+id/toobar_settings"
             android:layout_width="match_parent"
